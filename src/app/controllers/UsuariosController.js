@@ -1,3 +1,5 @@
+import conexao from "../database/conexao.js";
+
 class UsuariosController {
     index(req, res) {
         const sql = "SELECT * FROM usuarios;";
