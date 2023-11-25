@@ -1,5 +1,4 @@
 class UsuariosController {
-    
     index(req, res) {
         const sql = "SELECT * FROM usuarios;";
         conexao.query(sql, (erro, resultado) => {

@@ -1,5 +1,5 @@
 import express from 'express';
-import conexao from './app/controllers/database/conexao.js';
+import conexao from './app/database/conexao.js';
 import UsuariosController from './app/controllers/UsuariosController.js';
 const app = express();
 
