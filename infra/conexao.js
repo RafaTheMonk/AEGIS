@@ -8,4 +8,6 @@ const conexao = mysql.createConnection({
     database: 'bd-aegis'
 })
 
+conexao.connect()
+
 export default conexao
