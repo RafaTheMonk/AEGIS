@@ -1,71 +1,33 @@
-import conexao from "../database/conexao.js";
+import UsuariosRepository from "../repositories/UsuariosRepository.js"
 
 class UsuariosController {
-    index(req, res) {
-        const sql = "SELECT * FROM usuarios;";
-        conexao.query(sql, (erro, resultado) => {
-          if (erro) {
-            res.status(404).json({'erro': erro});
-          } else {
-            res.status(200).json(resultado);
-          }
-        });
+  
+    async index(req, res) {
+      const row = await UsuariosRepository.findAll()
+      res.json(row) 
     };
 
-    show(req, res) {
-        const id = req.params.id;
-        const sql = "SELECT * FROM usuarios WHERE id=?;";
-      
-        conexao.query(sql, id, (erro, resultado) => {
-          const linha = resultado[0];
-          if (erro) {
-            res.status(404).json({'erro': erro});
-          } else {
-            res.status(200).json(linha);
-          }
-        });
+    async show(req, res) {
+      const id = req.params.id
+      const row = await UsuariosRepository.findById(id)
+      res.json(row)
     };
 
-    store(req, res) {
-        const usuario = req.body;
-        const sql = "INSERT INTO usuarios SET ?;";
-      
-        conexao.query(sql, usuario, (erro, resultado) => {
-      
-          if (erro) {
-            res.status(404).json({'erro': erro});
-          } else {
-            res.status(201).json(resultado);
-          }
-        });
-    }
+    async store(req, res) {
+      const usuario = req.body;  
+      const row = await UsuariosRepository.create(usuario)
+      res.json(row)
+    };
 
-    update(req, res) {
+    async update(req, res) {
         const id = req.params.id;
         const usuario = req.body;
-      
-        const sql = "UPDATE usuarios SET ? WHERE id=?;";
-      
-        conexao.query(sql, [usuario, id], (erro, resultado) => {
-          if (erro) {
-            res.status(404).json({'erro': erro});
-          } else {
-            res.status(200).json(resultado);
-          }
-        });
-    }
+        const row = await UsuariosRepository.update(usuario, id)
+    };
 
-    delete(req, res) {
+    async delete(req, res) {
         const id = req.params.id;
-        const sql = "DELETE FROM usuarios WHERE id=?;";
-      
-        conexao.query(sql, id, (erro, resultado) => {
-          if (erro) {
-            res.status(404).json({'erro': erro});
-          } else {
-            res.status(200).json(resultado);
-          }
-        });
+        const row = await UsuariosRepository.delete(id)
     };
 }
 
