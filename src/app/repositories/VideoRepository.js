@@ -1,35 +1,30 @@
-import conexao from "../database/conexao.js";
+import { consulta } from "../database/conexao.js";
 
 class VideoRepository {
-  create() {}
+  create(video) {
+    const sql = "INSERT INTO videos SET ?;";
+    return consulta(sql, video, "Não foi possível cadastrar!");
+  }
 
   findAll() {
     const sql = "SELECT * FROM videos;";
-    conexao.query(sql, (error, results) => {
-      if (error) {
-        res.status(404).json({ error: error });
-      } else {
-        res.status(200).json(results);
-      }
-    });
+    return consulta(sql, "Não foi possível localizar!");
   }
 
-  findById() {
-    const id = req.params.id;
+  findById(id) {
     const sql = "SELECT * FROM videos WHERE id=?;";
-    conexao.query(sql, id, (error, results) => {
-      const linha = results[0];
-      if (error) {
-        res.status(404).json({ error: error });
-      } else {
-        res.status(200).json(linha);
-      }
-    });
+    return consulta(sql, id, "Não foi possível localizar!");
   }
 
-  update() {}
+  update(video, id) {
+    const sql = "UPDATE videos SET ? WHERE id=?;";
+    return consulta(sql, [video, id], "Não foi possível atualizar!");
+  }
 
-  delete() {}
+  delete(id) {
+    const sql = "DELETE FROM videos WHERE id=?;";
+    return consulta(sql, id, "Não foi possível apagar!");
+  }
 }
 
 export default new VideoRepository();

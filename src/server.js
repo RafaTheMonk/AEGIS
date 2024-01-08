@@ -1,6 +1,6 @@
-import app from "./src/app.js";
+import app from "./app.js";
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 // Escutar a porta
 app.listen(PORT, () => {
