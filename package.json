@@ -1,5 +1,5 @@
 {
-  "name": "aegis",
+  "name": "api-rest",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -13,7 +13,9 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
-    "mysql": "^2.18.1",
-    "nodemon": "^3.0.1"
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }

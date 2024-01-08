@@ -1,10 +1,8 @@
-import app from './App.js'
+import app from './app.js'
 
-// A porta passada pelo serviço de hospedagem ou a porta 3000
 const PORT = process.env.PORT || 3000
 
-// Escutar a porta
+// escutar a porta 3000
 app.listen(PORT, () => {
-    console.log(`Servidor Rodando na porta ${PORT}`)
+    console.log(`Servidor rodando no endereço http://localhost:${PORT}`)
 })
-

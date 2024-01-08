@@ -1,11 +1,12 @@
-import express from 'express';
-import routes from './routes.js';
+import express from 'express'
+import routes from './routes.js'
 
-const app = express();
+const app = express()
 
-app.use(express.json());
+// indicar para o express ler body com json
+app.use(express.json())
 
-// Usar o router
+// usar o routes depois do app.use(express.json())
 app.use(routes)
 
-export default app;
+export default app
